@@ -3,15 +3,13 @@ library(aws.s3)
 library(glmnet)
 library(jsonlite)
 
-key = Sys.getenv("AWS_ACCESS_KEY_ID")
-secret = Sys.getenv("AWS_SECRET_ACCESS_KEY")
+# key = Sys.getenv("AWS_ACCESS_KEY_ID")
+# secret = Sys.getenv("AWS_SECRET_ACCESS_KEY")
 
 #* @param type
 #* @param cid
 #* @post /build
 function(type = "build", cid){
-  
-  # out <- list(key = key, secret = secret)
   
   ##Input parameters
   # object <- "balance.csv" #Name of the data in the s3 bucket (dummy here)
@@ -30,7 +28,7 @@ function(type = "build", cid){
   
   ##Authenticate without specifying credentials- alternatives in https://github.com/cloudyr/aws.signature/  (Which include authenticating while running in ec2 instance)
   # aws.signature::use_credentials()
-  # credentials <- aws.signature::locate_credentials()
+  credentials <- aws.signature::locate_credentials()
   
   # (role <- aws.ec2metadata::metadata$iam_info())
   # # get role credentials
@@ -58,5 +56,5 @@ function(type = "build", cid){
   # aws.s3::s3write_using(x = x, FUN = jsonlite::write_json, object = object_out, bucket = bucket_out, folder = folder_out)
   # 
   # return(list(status = "Complete"))
-  key
+  credentials
 }
