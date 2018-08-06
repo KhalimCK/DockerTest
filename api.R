@@ -3,15 +3,15 @@ library(aws.s3)
 library(glmnet)
 library(jsonlite)
 
+key = Sys.getenv("AWS_ACCESS_KEY_ID")
+secret = Sys.getenv("AWS_SECRET_ACCESS_KEY")
+
 #* @param type
 #* @param cid
 #* @post /build
 function(type = "build", cid){
   
-  key = Sys.getenv("AWS_ACCESS_KEY_ID")
-  secret = Sys.getenv("AWS_SECRET_ACCESS_KEY")
-  
-  out <- list(key = key, secret = secret)
+  # out <- list(key = key, secret = secret)
   
   ##Input parameters
   # object <- "balance.csv" #Name of the data in the s3 bucket (dummy here)
@@ -58,5 +58,5 @@ function(type = "build", cid){
   # aws.s3::s3write_using(x = x, FUN = jsonlite::write_json, object = object_out, bucket = bucket_out, folder = folder_out)
   # 
   # return(list(status = "Complete"))
-  out
+  key
 }
