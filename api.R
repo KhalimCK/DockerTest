@@ -8,7 +8,7 @@ library(jsonlite)
 
 #* @param type
 #* @param cid
-#* @post /build
+#* @post /
 function(type = "build", cid){
   
   ##Input parameters
@@ -28,7 +28,7 @@ function(type = "build", cid){
   
   ##Authenticate without specifying credentials- alternatives in https://github.com/cloudyr/aws.signature/  (Which include authenticating while running in ec2 instance)
   # aws.signature::use_credentials()
-  credentials <- aws.signature::locate_credentials()
+  aws.signature::locate_credentials()
   
   # (role <- aws.ec2metadata::metadata$iam_info())
   # # get role credentials

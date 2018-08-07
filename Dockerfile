@@ -15,5 +15,5 @@ WORKDIR /app/
 COPY ./functionDependencies.R /app/functionDependencies.R
 COPY ./api.R /app/api.R
 RUN Rscript /app/functionDependencies.R
-EXPOSE 8000
+EXPOSE 80
 CMD ["/app/api.R"]
