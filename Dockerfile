@@ -4,6 +4,7 @@ RUN R -e "install.packages('aws.s3')"
 RUN R -e "install.packages('aws.ec2metadata')"
 RUN R -e "install.packages('glmnet')"
 RUN R -e "install.packages('jsonlite')"
+RUN R -e "install.packages('lubridate')"
 RUN mkdir -p /app/
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
